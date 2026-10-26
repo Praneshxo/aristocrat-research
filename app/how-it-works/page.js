@@ -1,0 +1,4 @@
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+const stages=['Clarify','Strategise','Build','Validate','Position','Advance']
+export default function HowItWorks(){return <><Header/><main className="py-16"><div className="max-w-7xl mx-auto px-4"><h1 className="text-5xl font-bold mb-6">The Aristocrat Operating Model</h1><p className="text-xl mb-12 max-w-3xl">Define the outcome, assign ownership, build the evidence and control the next move.</p><div className="space-y-8">{stages.map((s,i)=><div key={s} className="flex gap-6 border-l-4 border-primary pl-6 py-4"><div className="text-4xl font-bold text-primary">0{i+1}</div><div><h3 className="text-2xl font-semibold mb-2">{s}</h3><p>Move serious ambition through visible milestones toward a verified outcome.</p></div></div>)}</div></div></main><Footer/></>}
