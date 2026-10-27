@@ -35,3 +35,75 @@ html { font-size:10px; }
 .home-hero::before {
   background:linear-gradient(to right,transparent calc(var(--px) - 1px),rgba(23,23,27,.24) calc(var(--px) - 1px),rgba(23,23,27,.24) calc(var(--px) + 1px),transparent calc(var(--px) + 1px)),linear-gradient(to bottom,transparent calc(var(--py) - 1px),rgba(23,23,27,.24) calc(var(--py) - 1px),rgba(23,23,27,.24) calc(var(--py) + 1px),transparent calc(var(--py) + 1px)) !important;
 }
+
+/* Compact the pathway section: type, route cards, and the whitespace scale together. */
+.problem { padding:32px 16px 64px; }
+.problem h2 { font-size:clamp(30px,2.8vw,52px); margin-bottom:68px; }
+.problem-label { font-size:clamp(34px,3.3vw,58px); }
+.problem-list { padding-left:22px; }
+.problem-list article { grid-template-columns:120px minmax(0,1fr); gap:20px; padding:14px 0 16px; }
+.problem-list i { width:120px; height:120px; font-size:52px; }
+.problem-list h3 { font-size:30px; margin-bottom:9px; }
+.problem-list p { font-size:14px; line-height:1.25; }
+
+@media (max-width:900px) {
+  .problem { padding:28px 20px 48px; }
+  .problem h2 { font-size:clamp(28px,7vw,42px); margin-bottom:42px; }
+  .problem-label { font-size:clamp(36px,9vw,52px); margin-bottom:36px; }
+  .problem-list { padding-left:0; }
+  .problem-list article { grid-template-columns:72px minmax(0,1fr); gap:14px; padding:12px 0; }
+  .problem-list i { width:72px; height:72px; font-size:32px; }
+  .problem-list h3 { font-size:25px; }
+  .problem-list p { font-size:13px; }
+}
+
+/* Operating-model scroll reveal: stages enter in reading order as the section arrives. */
+.process-intro,
+.process .timeline article {
+  opacity:0;
+  transform:translateY(34px);
+}
+.process-intro.is-revealed {
+  animation:processReveal .7s cubic-bezier(.22,1,.36,1) .05s forwards;
+}
+.process .timeline article.is-revealed {
+  animation:processReveal .65s cubic-bezier(.22,1,.36,1) .05s forwards;
+}
+@keyframes processReveal {
+  to { opacity:1; transform:translateY(0); }
+}
+@media (prefers-reduced-motion:reduce) {
+  .process-intro,
+  .process .timeline article { opacity:1; transform:none; }
+  .process-intro.is-revealed,
+  .process .timeline article.is-revealed { animation:none; }
+}
+
+/* Pathway cards reveal as they enter view; number panels fill after the card is visible. */
+.problem-list article {
+  opacity:0;
+  transform:translateY(26px);
+}
+.problem-list article.is-revealed {
+  animation:routeReveal .55s cubic-bezier(.22,1,.36,1) var(--reveal-delay) forwards;
+}
+.problem-list article i {
+  background:transparent;
+  border:1px solid rgba(40,84,247,.42);
+  color:transparent;
+}
+.problem-list article.is-revealed i {
+  animation:routeBoxFill .45s cubic-bezier(.22,1,.36,1) calc(var(--reveal-delay) + .18s) forwards;
+}
+@keyframes routeReveal {
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes routeBoxFill {
+  to { background:var(--electric); border-color:var(--electric); color:#fff; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .problem-list article { opacity:1; transform:none; }
+  .problem-list article.is-revealed,
+  .problem-list article.is-revealed i { animation:none; }
+  .problem-list article i { background:var(--electric); border-color:var(--electric); color:#fff; }
+}
