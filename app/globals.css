@@ -107,3 +107,92 @@ html { font-size:10px; }
   .problem-list article.is-revealed i { animation:none; }
   .problem-list article i { background:var(--electric); border-color:var(--electric); color:#fff; }
 }
+
+/* Phone layout: keep the opening message visible and make outcome routes scanable. */
+@media (max-width:520px) {
+  .home-hero {
+    min-height:590px;
+  }
+
+  .home-hero::before {
+    background:linear-gradient(to right, transparent 49.7%, rgba(23,23,27,.16) 49.7%, rgba(23,23,27,.16) 50.3%, transparent 50.3%) !important;
+  }
+
+  .hero-orb { display:none !important; }
+
+  .hero-copy {
+    align-self:start;
+    padding:38px 16px 156px;
+  }
+
+  .hero-title {
+    max-width:330px;
+    margin-bottom:15px;
+    font-size:42px;
+    line-height:.86;
+  }
+
+  .hero-intro {
+    max-width:300px;
+    margin-bottom:17px;
+    font-size:13px;
+    line-height:1.22;
+  }
+
+  .hero-actions {
+    display:grid;
+    justify-content:start;
+    gap:8px;
+  }
+
+  .hero-button {
+    min-height:34px;
+    padding:8px 11px;
+    font-size:11px;
+  }
+
+  .hero-button .cta-arrow { font-size:15px; }
+
+  .hero-context {
+    left:16px;
+    bottom:25px;
+    max-width:260px;
+    padding-left:8px;
+    font-size:13px;
+  }
+
+  .record { padding:48px 12px 0; }
+
+  .case-grid article {
+    min-height:218px;
+    padding:26px 30px;
+  }
+
+  .case-grid h3 {
+    max-width:240px;
+    margin:0 0 22px;
+    font-size:25px;
+  }
+
+  .case-grid small { font-size:16px; }
+
+  .case-grid p {
+    max-width:270px;
+    margin:20px 0 34px;
+    font-size:18px;
+    line-height:1.08;
+  }
+
+  .case-grid footer {
+    right:18px;
+    bottom:14px;
+    left:30px;
+    font-size:9px;
+  }
+
+  .corner {
+    top:20px;
+    right:25px;
+    font-size:43px;
+  }
+}
